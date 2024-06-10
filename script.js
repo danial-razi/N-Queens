@@ -2,6 +2,7 @@ let solutions = new Set();
 const checkBtn = document.querySelector('#check');
 const resetBtn = document.querySelector('#reset');
 const spans = document.querySelectorAll('#board>span');
+const dialog = document.querySelector('dialog');
 
 for (let span of spans) {
   span.addEventListener('click', () => {
@@ -76,11 +77,26 @@ function checkAnswer() {
   }
 
   if (number == 0 && counter == 8) {
-    alert('yes');
+    document.querySelector('dialog').style.display = 'flex';
+    dialog.showModal();
+    document.querySelector('dialog>p').innerHTML = 'This is a correct solution!';
+    document.querySelector('dialog>p').style.backgroundColor = 'green';
+    document.querySelector('dialog>p').style.color = 'white';
     solutions.add(filledArray.join(','));
     document.querySelector('#sln').innerHTML = solutions.size;
+  } else {
+    document.querySelector('dialog').style.display = 'flex';
+    dialog.showModal();
+    document.querySelector('dialog>p').innerHTML = 'This is a flase solution!';
+    document.querySelector('dialog>p').style.backgroundColor = 'red';
+    document.querySelector('dialog>p').style.color = 'white';
   }
 }
+
+document.querySelector('dialog>button').addEventListener('click', () => {
+  dialog.close();
+  dialog.style.display = 'none';
+});
 
 function sameRow(a, b) {
   let row = [];

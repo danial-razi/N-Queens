@@ -13,7 +13,7 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1>N-Queens Problem</h1>
+      <h1 id="h1">N-Queens Problem</h1>
       <p>For N = 8</p>
     </header>
     <main class="main">
@@ -90,14 +90,21 @@
         <span class="c76" id="63"></span>
         <span class="c77" id="64"></span>
       </div>
+
       <div id="settings">
         <button id="check">Check</button>
         <button id="reset">RESET</button>
-        <p>Your Solutions: <span id="sln">0</span>/92</p>
+        <p id="p">Your Solutions : <span id="sln">0</span> / 92</p>
       </div>
+
+      <dialog>
+        <p></p>
+        <button autofocus>OK</button>
+      </dialog>
+      
     </main>
     <footer class="footer">
-      <p>Create By ...</p>
+      <p id="name">Fateme Rezaei</p>
     </footer>
   </div>
   <script src="script.js"></script>
