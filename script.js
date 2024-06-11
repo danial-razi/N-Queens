@@ -3,10 +3,19 @@ const checkBtn = document.querySelector('#check');
 const resetBtn = document.querySelector('#reset');
 const spans = document.querySelectorAll('#board>span');
 const dialog = document.querySelector('dialog');
+const darkCells = [2, 4, 6, 8, 9, 11, 13, 15, 18, 20, 22, 24, 25, 27, 29, 31, 34, 36, 38, 40, 41, 43, 45, 47, 50, 52, 54, 56, 57, 59, 61, 63];
+const lightCells = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23, 26, 28, 30, 32, 33, 35, 37, 39, 42, 44, 46, 48, 49, 51, 53, 55, 58, 60, 62, 64];
 
 for (let span of spans) {
   span.addEventListener('click', () => {
-    span.classList.toggle('filled');
+    if (darkCells.includes(+span.id)) {
+      span.classList.toggle('filled');
+      span.classList.toggle('light');
+    }
+    if (lightCells.includes(+span.id)) {
+      span.classList.toggle('filled');
+      span.classList.toggle('dark');
+    }
   });
 }
 
@@ -22,6 +31,8 @@ const row8 = Array.from(document.querySelectorAll('[class^=c7]'));
 resetBtn.addEventListener('click', () => {
   for (let span of spans) {
     span.classList.remove('filled');
+    span.classList.remove('dark');
+    span.classList.remove('light');
   }
 });
 
